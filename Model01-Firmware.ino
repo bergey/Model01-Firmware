@@ -28,10 +28,10 @@
 #define Macro_VersionInfo M(MACRO_VERSION_INFO)
 #define MACRO_ANY 2
 #define Macro_Any M(MACRO_ANY)
-#define NUMPAD_KEYMAP 3
+#define NUMPAD_KEYMAP 4
 
 #define GENERIC_FN2  KEYMAP_STACKED ( \
-___,      Key_Keymap0,           Key_Keymap1,      Key_Keymap4,     Key_F4,        Key_F5,           XXX,         \
+___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,         \
 Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE, \
 Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,                   \
 Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE, \
@@ -54,7 +54,7 @@ ___ \
     ___, ___, ___, ___, ___, ___,       \
     ___, ___, ___, ___, ___, ___, ___,  \
                ___, ___, ___, ___,  \
-                 Key_Keymap2_Momentary, \
+                 Key_Keymap3_Momentary, \
 \
 \
     Macro_VersionInfo,  ___, Key_Keypad7, Key_Keypad8,   Key_Keypad9,        Key_KeypadSubtract, ___, \
@@ -62,47 +62,82 @@ ___ \
          ___, Key_Keypad1, Key_Keypad2,   Key_Keypad3,        Key_Equals,         Key_Quote, \
     ___, ___, Key_Keypad0, Key_KeypadDot, Key_KeypadMultiply, Key_KeypadDivide,   Key_Enter, \
     ___, ___, ___, ___, \
-    Key_Keymap2_Momentary \
-)
-
-#define QWERTY KEYMAP_STACKED ( \
-    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
-    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
-    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
-    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,        \
-    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
-                          Key_Keymap1_Momentary,     \
-\
-    Macro_Any,       Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_ToggleNumlock, \
-    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_Equals,       \
-                   Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,       \
-    Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Minus,       \
-    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                   \
-    Key_Keymap2_Momentary \
+    Key_Keymap3_Momentary \
 )
 
 // Move punctuation for the case when OS is set to Dvorak
-#define QWERTY_DVORAK_STYLE KEYMAP_STACKED ( \
+#define LINUX_LAPTOP KEYMAP_STACKED ( \
     ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
     Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
     Key_Minus,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
-    Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,        \
-    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
-                          Key_Keymap2_Momentary,     \
+    Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_RightControl,        \
+    Key_LeftAlt, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
+                          Key_Keymap3_Momentary,     \
 \
-    Macro_Any,       Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_RightBracket, \
+    Key_Keymap5_Momentary,       Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_RightBracket, \
     Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_LeftBracket,       \
                    Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,       \
-    Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Backslash,       \
-    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                   \
-    Key_Keymap2_Momentary \
+    Key_Escape,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Backslash,       \
+    Key_RightShift, Key_PrintScreen, Key_Spacebar, Key_RightAlt,                   \
+    Key_Keymap3_Momentary \
 )
 
+// Move punctuation back for the case when OS is set to Qwerty
+#define QWERTY_PUNCTUATION KEYMAP_STACKED ( \
+    ___,          ___, ___, ___, ___, ___, ___, \
+    ___, ___, ___, ___, ___, ___, ___,           \
+    Key_PageUp,   ___, ___, ___, ___, ___,                    \
+    Key_PageDown, ___, ___, ___, ___, ___, ___,        \
+    ___, ___, ___, ___,         \
+                          ___,     \
+\
+    ___,       ___, ___, ___,     ___,      ___,         Key_ToggleNumlock, \
+    ___,     ___, ___, ___,     ___,      ___,         Key_Equals,       \
+                   ___, ___, ___,     ___,      ___, ___,       \
+    ___,  ___, ___, ___, ___, ___,     Key_Minus,       \
+    ___, ___, ___, ___,                   \
+    ___ \
+)
+
+// Move mods back to default layout
+#define STOCK_MODS KEYMAP_STACKED ( \
+    ___,          ___, ___, ___, ___, ___, ___, \
+    ___, ___, ___, ___, ___, ___, ___,           \
+    ___,   ___, ___, ___, ___, ___,                    \
+    ___, ___, ___, ___, ___, ___, Key_Escape,        \
+    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
+                          ___,     \
+\
+    ___,       ___, ___, ___,     ___,      ___,         ___, \
+    ___,     ___, ___, ___,     ___,      ___,         ___,       \
+                   ___, ___, ___,     ___,      ___, ___,       \
+    Key_RightAlt,  ___, ___, ___, ___, ___,     ___,       \
+    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                   \
+    ___ \
+)
+
+#define SWITCH_LAYER KEYMAP_STACKED ( \
+    ___,          Key_Keymap1, Key_Keymap2, ___, ___, ___, ___, \
+    ___, ___, ___, ___, ___, ___, ___,           \
+    ___,   ___, ___, ___, ___, ___,                    \
+    ___, ___, ___, ___, ___, ___, ___,        \
+    ___, ___, ___, ___,         \
+                          ___,     \
+\
+    ___,       ___, ___, ___,     ___,      ___,         ___, \
+    ___,     ___, ___, ___,     ___,      ___,         ___,       \
+                   ___, ___, ___,     ___,      ___, ___,       \
+    ___,  ___, ___, ___, ___, ___,     ___,       \
+    ___, ___, ___, ___,                   \
+    ___ \
+)
 const Key keymaps[][ROWS][COLS] PROGMEM = {
-  QWERTY_DVORAK_STYLE,
-  QWERTY,
+  LINUX_LAPTOP,
+  QWERTY_PUNCTUATION,
+  STOCK_MODS,
   GENERIC_FN2,
-  NUMPAD
+  NUMPAD,
+  SWITCH_LAYER
 };
 
 static LEDSolidColor solidRed(160, 0, 0);

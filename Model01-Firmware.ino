@@ -29,6 +29,7 @@
 #define Macro_VersionInfo M(MACRO_VERSION_INFO)
 #define MACRO_ANY 2
 #define Macro_Any M(MACRO_ANY)
+#define MACRO_LED_OFF 3
 #define NUMPAD_KEYMAP 4
 
 #define GENERIC_FN2  KEYMAP_STACKED ( \
@@ -85,7 +86,7 @@ ___ \
 
 // When OS is set to Dvorak, and I have mapped mods for emacs
 #define MAC_LAPTOP KEYMAP_STACKED ( \
-    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
+    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_Keymap5_Momentary, \
     Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
     Key_Minus,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
     Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftGui,        \
@@ -136,9 +137,9 @@ ___ \
 
 #define SWITCH_LAYER KEYMAP_STACKED ( \
     ___,          Key_Keymap1, Key_Keymap2, ___, ___, ___, ___, \
-    ___, ___, ___, ___, ___, ___, ___,           \
-    ___,   ___, ___, ___, ___, ___,                    \
-    ___, ___, ___, ___, ___, ___, ___,        \
+    M(4), M(5), M(6), M(7), M(8), M(9), M(MACRO_LED_OFF),       \
+    M(10), M(11), M(13), M(14), ___, ___,                       \
+    ___, ___, ___, ___, ___, ___, Key_LEDEffectNext,        \
     ___, ___, ___, ___,         \
                           ___,     \
 \
@@ -179,6 +180,10 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
     if (keyIsPressed(keyState))
       kaleidoscope::hid::pressKey(lastKey);
+  } else if (macroIndex == MACRO_LED_OFF &&keyToggledOn(keyState)) {
+       LEDOff.activate();
+  } else if (keyToggledOn(keyState)) {
+       LEDControl.set_mode(macroIndex - MACRO_LED_OFF - 1);
   }
   return MACRO_NONE;
 }

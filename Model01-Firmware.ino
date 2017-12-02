@@ -49,14 +49,15 @@ ___ \
 )
 
 
-
+// Left hand for switching LEDS & keymaps
+// Right hand for numpad
 #define NUMPAD KEYMAP_STACKED  (\
-    ___, ___, ___, ___, ___, ___, ___,  \
-    ___, ___, ___, ___, ___, ___, ___,  \
-    ___, ___, ___, ___, ___, ___,       \
-    ___, ___, ___, ___, ___, ___, ___,  \
-               ___, ___, ___, ___,  \
-                 Key_Keymap3_Momentary, \
+    ___,          Key_Keymap1, Key_Keymap2, Key_Keymap5, ___, ___, ___, \
+    M(4), M(5), M(6), M(7), M(8), M(9), M(MACRO_LED_OFF),       \
+    M(10), M(11), M(13), M(14), ___, ___,                       \
+    ___, ___, ___, ___, ___, ___, Key_LEDEffectNext,        \
+    ___, ___, ___, ___,         \
+                          ___,     \
 \
 \
     Macro_VersionInfo,  ___, Key_Keypad7, Key_Keypad8,   Key_Keypad9,        Key_KeypadSubtract, ___, \
@@ -76,7 +77,7 @@ ___ \
     Key_LeftAlt, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
                           Key_Keymap3_Momentary,     \
 \
-    Key_Keymap5_Momentary,       Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_RightBracket, \
+    Key_Keymap4_Momentary,       Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_RightBracket, \
     Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_LeftBracket,       \
                    Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,       \
     Key_Escape,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Backslash,       \
@@ -86,19 +87,37 @@ ___ \
 
 // When OS is set to Dvorak, and I have mapped mods for emacs
 #define MAC_LAPTOP KEYMAP_STACKED ( \
-    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_Keymap5_Momentary, \
+    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_Keymap4_Momentary, \
     Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
     Key_Minus,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
     Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftGui,        \
     Key_Backspace, Key_LeftControl, Key_LeftAlt, Key_LeftShift,         \
                           Key_Keymap3_Momentary,     \
 \
-    Key_Keymap5_Momentary,       Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_RightBracket, \
+    Key_Keymap4_Momentary,       Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_RightBracket, \
     Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_LeftBracket,       \
                    Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,       \
     Key_Escape,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Backslash,       \
     Key_RightShift, Key_RightAlt, Key_RightControl, Key_Spacebar,       \
     Key_Keymap3_Momentary \
+)
+
+
+// When OS is set to Qwerty, say for pairing with someone
+#define DVORAK KEYMAP_STACKED ( \
+    ___,          ___,___,___,___,___,___, \
+    ___, Key_Quote, Key_Comma, Key_Period, Key_P, Key_Y, ___,                   \
+    Key_LeftBracket,   Key_A, Key_O, Key_E, Key_U, Key_I,                    \
+    Key_RightBracket, Key_Semicolon, Key_Q, Key_J, Key_K, Key_X, Key_LeftGui, \
+___,___,___,___,         \
+                          ___,     \
+\
+    ___,       ___, ___, ___,     ___,      ___,         Key_Equals, \
+    ___,     Key_F, Key_G, Key_C,     Key_R,      Key_L,         Key_Slash,       \
+                   Key_D, Key_H, Key_T,     Key_N,      Key_S, Key_Minus,       \
+    ___,  Key_B, Key_M, Key_W, Key_V, Key_Z,     ___,       \
+    ___, ___, ___, ___,       \
+    ___ \
 )
 
 // Move punctuation back for the case when OS is set to Qwerty
@@ -135,28 +154,13 @@ ___ \
     ___ \
 )
 
-#define SWITCH_LAYER KEYMAP_STACKED ( \
-    ___,          Key_Keymap1, Key_Keymap2, ___, ___, ___, ___, \
-    M(4), M(5), M(6), M(7), M(8), M(9), M(MACRO_LED_OFF),       \
-    M(10), M(11), M(13), M(14), ___, ___,                       \
-    ___, ___, ___, ___, ___, ___, Key_LEDEffectNext,        \
-    ___, ___, ___, ___,         \
-                          ___,     \
-\
-    ___,       ___, ___, ___,     ___,      ___,         ___, \
-    ___,     ___, ___, ___,     ___,      ___,         ___,       \
-                   ___, ___, ___,     ___,      ___, ___,       \
-    ___,  ___, ___, ___, ___, ___,     ___,       \
-    ___, ___, ___, ___,                   \
-    ___ \
-)
 const Key keymaps[][ROWS][COLS] PROGMEM = {
   MAC_LAPTOP,
   QWERTY_PUNCTUATION,
   STOCK_MODS,
   GENERIC_FN2,
   NUMPAD,
-  SWITCH_LAYER
+  DVORAK
 };
 
 static kaleidoscope::LEDSolidColor solidRed(160, 0, 0);

@@ -12,7 +12,6 @@
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-Macros.h"
 #include "Kaleidoscope-LEDControl.h"
-#include "Kaleidoscope-Numlock.h"
 #include "Kaleidoscope.h"
 
 #include "LED-Off.h"
@@ -30,7 +29,6 @@
 #define MACRO_ANY 2
 #define Macro_Any M(MACRO_ANY)
 #define MACRO_LED_OFF 3
-#define NUMPAD_KEYMAP 4
 
 #define GENERIC_FN2  KEYMAP_STACKED ( \
 ___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           XXX,         \
@@ -129,7 +127,7 @@ ___,___,___,___,         \
     ___, ___, ___, ___,         \
                           ___,     \
 \
-    ___,       ___, ___, ___,     ___,      ___,         Key_ToggleNumlock, \
+    ___,       ___, ___, ___,     ___,      ___,         Key_Keymap4, \
     ___,     ___, ___, ___,     ___,      ___,         Key_Equals,       \
                    ___, ___, ___,     ___,      ___, ___,       \
     ___,  ___, ___, ___, ___, ___,     Key_Minus,       \
@@ -172,9 +170,7 @@ static kaleidoscope::LEDSolidColor solidIndigo(0, 0, 170);
 static kaleidoscope::LEDSolidColor solidViolet(130, 0, 120);
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
-  if (macroIndex == TOGGLENUMLOCK && keyToggledOn(keyState)) {
-    return NumLock.toggle();
-  } else if (macroIndex == 1 && keyToggledOn(keyState)) {
+  if (macroIndex == 1 && keyToggledOn(keyState)) {
     Macros.type(PSTR("Keyboardio Model 01 - Kaleidoscope "));
     Macros.type(PSTR(BUILD_INFORMATION));
   } else if (macroIndex == MACRO_ANY) {
@@ -204,12 +200,10 @@ void setup() {
     &LEDBreatheEffect,
     &AlphaSquareEffect,
     &StalkerEffect,
-    &NumLock,
     &Macros,
     &MouseKeys,
     NULL);
 
-  NumLock.numPadLayer = NUMPAD_KEYMAP;
   AlphaSquare.color = { 255, 0, 0 };
   LEDRainbowEffect.brightness(150);
   LEDRainbowWaveEffect.brightness(150);

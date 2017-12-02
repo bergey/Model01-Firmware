@@ -50,7 +50,7 @@ ___ \
 // Left hand for switching LEDS & keymaps
 // Right hand for numpad
 #define NUMPAD KEYMAP_STACKED  (\
-    ___,          Key_Keymap1, Key_Keymap2, Key_Keymap5, ___, ___, ___, \
+    ___,          Key_Keymap1, Key_Keymap2, Key_Keymap4, Key_Keymap5, ___, ___, \
     M(4), M(5), M(6), M(7), M(8), M(9), M(MACRO_LED_OFF),       \
     M(10), M(11), M(13), M(14), ___, ___,                       \
     ___, ___, ___, ___, ___, ___, Key_LEDEffectNext,        \

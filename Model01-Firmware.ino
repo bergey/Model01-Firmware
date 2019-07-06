@@ -68,18 +68,18 @@ ___ \
 
 // Move punctuation for the case when OS is set to Dvorak
 #define LINUX_LAPTOP KEYMAP_STACKED ( \
-    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, \
+    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_Keymap4_Momentary, \
     Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
     Key_Minus,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
     Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_RightControl,        \
-    Key_LeftAlt, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
+    Key_Backspace, Key_LeftAlt, Key_LeftGui, Key_LeftShift,         \
                           Key_Keymap3_Momentary,     \
 \
     Key_Keymap4_Momentary,       Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_RightBracket, \
     Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_LeftBracket,       \
                    Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,       \
     Key_Escape,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Backslash,       \
-    Key_RightShift, Key_PrintScreen, Key_Spacebar, Key_RightAlt,                   \
+    Key_RightShift, Key_PrintScreen, Key_RightAlt, Key_Spacebar,                    \
     Key_Keymap3_Momentary \
 )
 
@@ -153,7 +153,7 @@ ___,___,___,___,         \
 )
 
 const Key keymaps[][ROWS][COLS] PROGMEM = {
-  MAC_LAPTOP,
+  LINUX_LAPTOP,
   QWERTY_PUNCTUATION,
   STOCK_MODS,
   GENERIC_FN2,

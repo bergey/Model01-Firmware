@@ -85,19 +85,19 @@ ___ \
 
 // When OS is set to Dvorak, and I have mapped mods for emacs
 #define MAC_LAPTOP KEYMAP_STACKED ( \
-    ___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_Keymap4_Momentary, \
-    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,           \
-    Key_Minus,   Key_A, Key_S, Key_D, Key_F, Key_G,                    \
-    Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftGui,        \
-    Key_Backspace, Key_LeftControl, Key_LeftAlt, Key_LeftShift,         \
-                          Key_Keymap3_Momentary,     \
+          ___,          ___, ___, ___, ___, ___, ___,                    \
+          ___, ___, ___, ___, ___, ___, ___,                             \
+          ___,   ___, ___, ___, ___, ___,                                \
+          ___, ___, ___, ___, ___, ___, Key_LeftGui,                     \
+          ___, Key_LeftControl, Key_LeftAlt, ___,                        \
+          ___,                                                           \
 \
-    Key_Keymap4_Momentary,       Key_6, Key_7, Key_8,     Key_9,      Key_0,         Key_RightBracket, \
-    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,      Key_P,         Key_LeftBracket,       \
-                   Key_H, Key_J, Key_K,     Key_L,      Key_Semicolon, Key_Quote,       \
-    Key_Escape,  Key_N, Key_M, Key_Comma, Key_Period, Key_Slash,     Key_Backslash,       \
-    Key_RightShift, Key_RightAlt, Key_RightControl, Key_Spacebar,       \
-    Key_Keymap3_Momentary \
+          ___,       ___, ___, ___,     ___,      ___,         ___,      \
+          ___,     ___, ___, ___,     ___,      ___,         ___,        \
+          ___, ___, ___,     ___,      ___, ___,                         \
+          ___,  ___, ___, ___, ___, ___,     ___,                 \
+          ___, Key_RightAlt, Key_RightControl, ___,                      \
+          ___,                                                           \
 )
 
 

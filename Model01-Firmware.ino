@@ -145,21 +145,6 @@ enum { MACRO_VERSION_INFO,
 
 enum { PRIMARY, NUMPAD, FUNCTION, DVORAK, PUNCTUATION, MODS }; // layers
 
-
-/**
-  * To change your keyboard's layout from QWERTY to DVORAK or COLEMAK, comment out the line
-  *
-  * #define PRIMARY_KEYMAP_QWERTY
-  *
-  * by changing it to
-  *
-  * // #define PRIMARY_KEYMAP_QWERTY
-  *
-  * Then uncomment the line corresponding to the layout you want to use.
-  *
-  */
-
-
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
  */
@@ -168,7 +153,7 @@ enum { PRIMARY, NUMPAD, FUNCTION, DVORAK, PUNCTUATION, MODS }; // layers
 KEYMAPS(
 
   [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, ShiftToLayer(NUMPAD), // TODO LED
+  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, ShiftToLayer(NUMPAD),// TODO LED
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_Minus,   Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftControl,
@@ -199,7 +184,7 @@ KEYMAPS(
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_CapsLock,
+  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           LockLayer(NUMPAD),
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
    Key_PageUp, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
    Key_PageDown,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,

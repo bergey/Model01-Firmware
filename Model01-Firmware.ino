@@ -90,7 +90,14 @@
 
 enum { MACRO_VERSION_INFO,
        MACRO_ANY,
-       MACRO_LED_OFF
+       MACRO_LED_OFF,
+       // order of LED effects here must match order in KALEIDOSCOPE_INIT_PLUGINS
+       MACRO_RAINBOW,
+       MACRO_RAINBOW_WAVE,
+       MACRO_CHASE,
+       MACRO_SolidRed, MACRO_SolidOrange, MACRO_SolidYellow, MACRO_SolidGreen, MACRO_SolidBlue, MACRO_SolidIndigo, MACRO_SolidViolet,
+       MACRO_BREATHE,
+       MACRO_STALKER
      };
 
 
@@ -169,9 +176,9 @@ KEYMAPS(
 
 
   [NUMPAD] =  KEYMAP_STACKED
-  (___, LockLayer(DVORAK), LockLayer(PUNCTUATION), LockLayer(MODS), ___, LockLayer(NUMPAD), ___,
-    M(4), M(5), M(6), M(7), M(8), M(9), M(MACRO_LED_OFF),       \
-    M(10), M(11), M(13), M(14), ___, ___,                       \
+  (___, LockLayer(DVORAK), LockLayer(PUNCTUATION), LockLayer(MODS), ___, ___, ___,
+    M(MACRO_RAINBOW), M(MACRO_RAINBOW_WAVE), M(MACRO_CHASE), M(MACRO_SolidRed), M(MACRO_SolidOrange), M(MACRO_SolidYellow), M(MACRO_LED_OFF),       \
+   M(MACRO_SolidGreen), M(MACRO_SolidBlue), M(MACRO_SolidViolet), M(MACRO_BREATHE), M(MACRO_STALKER), ___, \
    ___, ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___,
    ___,
@@ -298,7 +305,7 @@ static void anyKeyMacro(uint8_t keyState) {
  */
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
-  switch (macroIndex) {
+  switch(macroIndex) {
 
   case MACRO_VERSION_INFO:
     versionInfoMacro(keyState);
@@ -311,7 +318,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     LEDOff.activate();
     break;
   default:
-    LEDControl.set_mode(macroIndex - MACRO_LED_OFF - 1);
+    LEDControl.set_mode(macroIndex - MACRO_LED_OFF);
   }
   return MACRO_NONE;
 }
@@ -456,7 +463,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The AlphaSquare effect prints each character you type, using your
   // keyboard's LEDs as a display
-  AlphaSquareEffect,
+  // AlphaSquareEffect,
 
   // The stalker effect lights up the keys you've pressed recently
   StalkerEffect,

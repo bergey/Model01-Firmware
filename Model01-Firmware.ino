@@ -90,6 +90,7 @@
 
 enum { MACRO_VERSION_INFO,
        MACRO_ANY
+       MACRO_LED_OFF
      };
 
 
@@ -175,7 +176,7 @@ KEYMAPS(
 
 #if defined(PRIMARY_KEYMAP_BERGEY)
   [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext, // TODO LED
+  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, ShiftToLayer(NUMPAD), // TODO LED
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_Minus,   Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftControl,
@@ -266,6 +267,9 @@ KEYMAPS(
 
   [NUMPAD] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
+    M(4), M(5), M(6), M(7), M(8), M(9), M(MACRO_LED_OFF),       \
+    M(10), M(11), M(13), M(14), ___, ___,                       \
+    ___, ___, ___, ___, ___, ___, Key_LEDEffectNext,        \
    ___, ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___, ___, ___, ___,
@@ -282,8 +286,8 @@ KEYMAPS(
   [FUNCTION] =  KEYMAP_STACKED
   (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           Key_CapsLock,
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
-   Key_Home, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
-   Key_End,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
+   Key_PageUp, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
+   Key_PageDown,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
    ___, Key_Delete, ___, ___,
    ___,
 
@@ -353,6 +357,11 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   case MACRO_ANY:
     anyKeyMacro(keyState);
     break;
+  case MACRO_LED_OFF:
+    LEDOff.activate();
+    break;
+  default:
+    LEDControl.set_mode(macroIndex - MACRO_LED_OFF - 1);
   }
   return MACRO_NONE;
 }

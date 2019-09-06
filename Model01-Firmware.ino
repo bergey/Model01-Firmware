@@ -89,7 +89,7 @@
   */
 
 enum { MACRO_VERSION_INFO,
-       MACRO_ANY
+       MACRO_ANY,
        MACRO_LED_OFF
      };
 
@@ -143,7 +143,7 @@ enum { MACRO_VERSION_INFO,
   *
   */
 
-enum { PRIMARY, NUMPAD, FUNCTION }; // layers
+enum { PRIMARY, NUMPAD, FUNCTION, DVORAK, PUNCTUATION, MODS }; // layers
 
 
 /**
@@ -159,13 +159,6 @@ enum { PRIMARY, NUMPAD, FUNCTION }; // layers
   *
   */
 
-#define PRIMARY_KEYMAP_BERGEY
-// #define PRIMARY_KEYMAP_QWERTY
-// #define PRIMARY_KEYMAP_COLEMAK
-// #define PRIMARY_KEYMAP_DVORAK
-// #define PRIMARY_KEYMAP_CUSTOM
-
-
 
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
@@ -174,7 +167,6 @@ enum { PRIMARY, NUMPAD, FUNCTION }; // layers
 
 KEYMAPS(
 
-#if defined(PRIMARY_KEYMAP_BERGEY)
   [PRIMARY] = KEYMAP_STACKED
   (___,          Key_1, Key_2, Key_3, Key_4, Key_5, ShiftToLayer(NUMPAD), // TODO LED
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
@@ -190,88 +182,11 @@ KEYMAPS(
    Key_RightShift, Key_PrintScreen, Key_RightAlt, Key_Spacebar,
    ShiftToLayer(FUNCTION)),
 
-#elif defined (PRIMARY_KEYMAP_QWERTY)
-  [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION),
-
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
-   Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION)),
-
-#elif defined (PRIMARY_KEYMAP_DVORAK)
-
-  [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1,         Key_2,     Key_3,      Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, Key_Tab,
-   Key_PageUp,   Key_A,         Key_O,     Key_E,      Key_U, Key_I,
-   Key_PageDown, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, Key_Escape,
-   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION),
-
-   M(MACRO_ANY),   Key_6, Key_7, Key_8, Key_9, Key_0, LockLayer(NUMPAD),
-   Key_Enter,      Key_F, Key_G, Key_C, Key_R, Key_L, Key_Slash,
-                   Key_D, Key_H, Key_T, Key_N, Key_S, Key_Minus,
-   Key_RightAlt,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Equals,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION)),
-
-#elif defined (PRIMARY_KEYMAP_COLEMAK)
-
-  [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_F, Key_P, Key_G, Key_Tab,
-   Key_PageUp,   Key_A, Key_R, Key_S, Key_T, Key_D,
-   Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION),
-
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
-   Key_Enter,     Key_J, Key_L, Key_U,     Key_Y,         Key_Semicolon, Key_Equals,
-                  Key_H, Key_N, Key_E,     Key_I,         Key_O,         Key_Quote,
-   Key_RightAlt,  Key_K, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION)),
-
-#elif defined (PRIMARY_KEYMAP_CUSTOM)
-  // Edit this keymap to make a custom layout
-  [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
-   Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
-   ShiftToLayer(FUNCTION),
-
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
-   Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
-   ShiftToLayer(FUNCTION)),
-
-#else
-
-#error "No default keymap defined. You should make sure that you have a line like '#define PRIMARY_KEYMAP_QWERTY' in your sketch"
-
-#endif
-
-
 
   [NUMPAD] =  KEYMAP_STACKED
-  (___, ___, ___, ___, ___, ___, ___,
+  (___, LockLayer(DVORAK), LockLayer(PUNCTUATION), LockLayer(MODS), ___, LockLayer(NUMPAD), ___,
     M(4), M(5), M(6), M(7), M(8), M(9), M(MACRO_LED_OFF),       \
     M(10), M(11), M(13), M(14), ___, ___,                       \
-    ___, ___, ___, ___, ___, ___, Key_LEDEffectNext,        \
-   ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___,
    ___,
@@ -296,7 +211,57 @@ KEYMAPS(
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
    Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
-   ___)
+   ___),
+
+  
+  [DVORAK] = KEYMAP_STACKED
+  (___,          ___,         ___,     ___,      ___, ___, ___,
+   ___, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, ___,
+   Key_LeftBracket,   Key_A,         Key_O,     Key_E,      Key_U, Key_I,
+   Key_RightBracket, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, Key_Escape,
+   ___, ___, ___, ___,
+   ___,
+
+   ___,   ___, ___, ___, ___, ___, Key_Equals,
+   ___,      Key_F, Key_G, Key_C, Key_R, Key_L, Key_Slash,
+                   Key_D, Key_H, Key_T, Key_N, Key_S, Key_Minus,
+   ___,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Equals,
+   ___, ___, ___, ___,
+   ___),
+
+// Move punctuation back for the case when OS is set to Qwerty
+   [PUNCTUATION] = KEYMAP_STACKED (                             \
+    ___,          ___, ___, ___, ___, ___, ___, \
+    ___, ___, ___, ___, ___, ___, ___,           \
+    Key_PageUp,   ___, ___, ___, ___, ___,                    \
+    Key_PageDown, ___, ___, ___, ___, ___, ___,        \
+    ___, ___, ___, ___,         \
+                          ___,     \
+\
+    ___,       ___, ___, ___,     ___,      ___,         Key_Keymap4, \
+    ___,     ___, ___, ___,     ___,      ___,         Key_Equals,       \
+                   ___, ___, ___,     ___,      ___, ___,       \
+    ___,  ___, ___, ___, ___, ___,     Key_Minus,       \
+    ___, ___, ___, ___,                   \
+    ___ ),
+
+// Move mods back to default layout
+   [MODS] = KEYMAP_STACKED (                        \
+    ___,          ___, ___, ___, ___, ___, ___, \
+    ___, ___, ___, ___, ___, ___, ___,           \
+    ___,   ___, ___, ___, ___, ___,                    \
+    ___, ___, ___, ___, ___, ___, Key_Escape,        \
+    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
+                          ___,     \
+\
+    ___,       ___, ___, ___,     ___,      ___,         ___, \
+    ___,     ___, ___, ___,     ___,      ___,         ___,       \
+                   ___, ___, ___,     ___,      ___, ___,       \
+    Key_RightAlt,  ___, ___, ___, ___, ___,     ___,       \
+    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                   \
+    ___ \
+        )
+   
 ) // KEYMAPS(
 
 /* Re-enable astyle's indent enforcement */

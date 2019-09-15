@@ -16,13 +16,6 @@
 // The Kaleidoscope core
 #include "Kaleidoscope.h"
 
-// Support for storing the keymap in EEPROM
-#include "Kaleidoscope-EEPROM-Settings.h"
-#include "Kaleidoscope-EEPROM-Keymap.h"
-
-// Support for communicating with the host via a simple Serial protocol
-#include "Kaleidoscope-FocusSerial.h"
-
 // Support for keys that move the mouse
 #include "Kaleidoscope-MouseKeys.h"
 
@@ -56,12 +49,6 @@
 
 // Support for an LED mode that prints the keys you press in letters 4px high
 #include "Kaleidoscope-LED-AlphaSquare.h"
-
-// Support for shared palettes for other plugins, like Colormap below
-#include "Kaleidoscope-LED-Palette-Theme.h"
-
-// Support for an LED mode that lets one configure per-layer color maps
-#include "Kaleidoscope-Colormap.h"
 
 // Support for Keyboardio's internal keyboard testing mode
 #include "Kaleidoscope-HardwareTestMode.h"
@@ -411,23 +398,6 @@ USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
 // The order can be important. For example, LED effects are
 // added in the order they're listed here.
 KALEIDOSCOPE_INIT_PLUGINS(
-  // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
-  // editable keymap in EEPROM.
-  EEPROMSettings,
-  EEPROMKeymap,
-
-  // Focus allows bi-directional communication with the host, and is the
-  // interface through which the keymap in EEPROM can be edited.
-  Focus,
-
-  // FocusSettingsCommand adds a few Focus commands, intended to aid in
-  // changing some settings of the keyboard, such as the default layer (via the
-  // `settings.defaultLayer` command)
-  FocusSettingsCommand,
-
-  // FocusEEPROMCommand adds a set of Focus commands, which are very helpful in
-  // both debugging, and in backing up one's EEPROM contents.
-  FocusEEPROMCommand,
 
   // The boot greeting effect pulses the LED button for 10 seconds after the
   // keyboard is first connected
@@ -467,13 +437,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The stalker effect lights up the keys you've pressed recently
   StalkerEffect,
-
-  // The LED Palette Theme plugin provides a shared palette for other plugins,
-  // like Colormap below
-  LEDPaletteTheme,
-
-  // The Colormap effect makes it possible to set up per-layer colormaps
-  ColormapEffect,
 
   // The numpad plugin is responsible for lighting up the 'numpad' mode
   // with a custom LED effect
@@ -534,17 +497,6 @@ void setup() {
   // with USB devices
   LEDOff.activate();
 
-  // To make the keymap editable without flashing new firmware, we store
-  // additional layers in EEPROM. For now, we reserve space for five layers. If
-  // one wants to use these layers, just set the default layer to one in EEPROM,
-  // by using the `settings.defaultLayer` Focus command, or by using the
-  // `keymap.onlyCustom` command to use EEPROM layers only.
-  EEPROMKeymap.setup(MODS+1);
-
-  // We need to tell the Colormap plugin how many layers we want to have custom
-  // maps for.  +1 because 0-indexed; use name of last layer.
-  ColormapEffect.max_layers(MODS+1);
-  ColormapEffect.activate();
 }
 
 /** loop is the second of the standard Arduino sketch functions.

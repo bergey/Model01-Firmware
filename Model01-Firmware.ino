@@ -80,6 +80,7 @@
 
 enum { MACRO_VERSION_INFO,
        MACRO_ANY,
+       MACRO_TOGGLE_QUKEYS,
        MACRO_LED_OFF,
        // order of LED effects here must match order in KALEIDOSCOPE_INIT_PLUGINS
        MACRO_RAINBOW,
@@ -166,7 +167,7 @@ KEYMAPS(
 
 
   [NUMPAD] =  KEYMAP_STACKED
-  (___, LockLayer(DVORAK), LockLayer(PUNCTUATION), LockLayer(MODS), ___, ___, ___,
+  (___, LockLayer(DVORAK), LockLayer(PUNCTUATION), LockLayer(MODS), M(MACRO_TOGGLE_QUKEYS), ___, ___,
     M(MACRO_RAINBOW), M(MACRO_RAINBOW_WAVE), M(MACRO_CHASE), M(MACRO_SolidRed), M(MACRO_SolidOrange), M(MACRO_SolidYellow), M(MACRO_LED_OFF),       \
    M(MACRO_SolidGreen), M(MACRO_SolidBlue), M(MACRO_SolidViolet), M(MACRO_BREATHE), M(MACRO_STALKER), ___, \
    ___, ___, ___, ___, ___, ___, ___,
@@ -303,6 +304,11 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   case MACRO_ANY:
     anyKeyMacro(keyState);
+    break;
+  case MACRO_TOGGLE_QUKEYS:
+    // not as useful as it looks, because it simplifies the keys to only Escape, not only Alt.
+    if (keyToggledOn(keyState))
+      Qukeys.toggle();
     break;
   case MACRO_LED_OFF:
     LEDOff.activate();

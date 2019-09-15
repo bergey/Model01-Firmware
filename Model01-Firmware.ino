@@ -62,6 +62,9 @@
 // Support for USB quirks, like changing the key state report protocol
 #include "Kaleidoscope-USB-Quirks.h"
 
+// https://github.com/keyboardio/Kaleidoscope-Qukeys
+#include <Kaleidoscope-Qukeys.h>
+
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
   * The names aren't particularly important. What is important is that each
   * is unique.
@@ -151,14 +154,14 @@ KEYMAPS(
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_Minus,   Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftGui,
-   Key_Backspace, Key_LeftControl, Key_LeftAlt, Key_LeftShift,
+   Key_Backspace, Key_LeftControl, ALT_T(Escape), Key_LeftShift,
    ShiftToLayer(FUNCTION),
 
    M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_RightBracket,
    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
                   Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    Key_Escape,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   Key_RightShift, Key_RightAlt, Key_RightControl, Key_Spacebar,
+   Key_RightShift, MT(RightAlt, Escape), Key_RightControl, Key_Spacebar,
    ShiftToLayer(FUNCTION)),
 
 
@@ -461,7 +464,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // comfortable - or able - to do automatically, but can be useful
   // nevertheless. Such as toggling the key report protocol between Boot (used
   // by BIOSes) and Report (NKRO).
-  USBQuirks
+  USBQuirks,
+
+  // https://github.com/keyboardio/Kaleidoscope-Qukeys
+  Qukeys
 );
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
@@ -496,6 +502,10 @@ void setup() {
   // This avoids over-taxing devices that don't have a lot of power to share
   // with USB devices
   LEDOff.activate();
+
+  Qukeys.setTimeout(200);
+  Qukeys.setReleaseDelay(20);
+
 
 }
 

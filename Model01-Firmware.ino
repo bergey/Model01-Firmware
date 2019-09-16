@@ -201,7 +201,7 @@ KEYMAPS(
   (___,          ___,         ___,     ___,      ___, ___, ___,
    ___, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, ___,
    Key_LeftBracket,   Key_A,         Key_O,     Key_E,      Key_U, Key_I,
-   Key_RightBracket, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, Key_Escape,
+   Key_RightBracket, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, ___,
    ___, ___, ___, ___,
    ___,
 

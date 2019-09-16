@@ -141,7 +141,7 @@ enum { MACRO_VERSION_INFO,
   *
   */
 
-enum { PRIMARY, NUMPAD, FUNCTION, DVORAK, PUNCTUATION, MODS }; // layers
+enum { PRIMARY, DVORAK, PUNCTUATION, MODS, NUMPAD, FUNCTION }; // layers
 
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
@@ -165,6 +165,55 @@ KEYMAPS(
    Key_RightShift, MT(RightAlt, Escape), Key_RightControl, Key_Spacebar,
    ShiftToLayer(FUNCTION)),
 
+
+  
+  [DVORAK] = KEYMAP_STACKED
+  (___,          ___,         ___,     ___,      ___, ___, ___,
+   ___, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, ___,
+   Key_LeftBracket,   Key_A,         Key_O,     Key_E,      Key_U, Key_I,
+   Key_RightBracket, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, Key_Escape,
+   ___, ___, ___, ___,
+   ___,
+
+   ___,   ___, ___, ___, ___, ___, Key_Equals,
+   ___,      Key_F, Key_G, Key_C, Key_R, Key_L, Key_Slash,
+                   Key_D, Key_H, Key_T, Key_N, Key_S, Key_Minus,
+   ___,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Equals,
+   ___, ___, ___, ___,
+   ___),
+
+// Move punctuation back for the case when OS is set to Qwerty
+   [PUNCTUATION] = KEYMAP_STACKED (                             \
+    ___,          ___, ___, ___, ___, ___, ___, \
+    ___, ___, ___, ___, ___, ___, ___,           \
+    Key_PageUp,   ___, ___, ___, ___, ___,                    \
+    Key_PageDown, ___, ___, ___, ___, ___, ___,        \
+    ___, ___, ___, ___,         \
+                          ___,     \
+\
+    ___,       ___, ___, ___,     ___,      ___,         LockLayer(NUMPAD), \
+    ___,     ___, ___, ___,     ___,      ___,         Key_Equals,       \
+                   ___, ___, ___,     ___,      ___, ___,       \
+    ___,  ___, ___, ___, ___, ___,     Key_Minus,       \
+    ___, ___, ___, ___,                   \
+    ___ ),
+
+// Move mods back to default layout
+   [MODS] = KEYMAP_STACKED (                        \
+    ___,          ___, ___, ___, ___, ___, ___, \
+    ___, ___, ___, ___, ___, ___, ___,           \
+    ___,   ___, ___, ___, ___, ___,                    \
+    ___, ___, ___, ___, ___, ___, Key_Escape,        \
+    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
+                          ___,     \
+\
+    ___,       ___, ___, ___,     ___,      ___,         ___, \
+    ___,     ___, ___, ___,     ___,      ___,         ___,       \
+                   ___, ___, ___,     ___,      ___, ___,       \
+    Key_RightAlt,  ___, ___, ___, ___, ___,     ___,       \
+    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                   \
+    ___ \
+        ),
 
   [NUMPAD] =  KEYMAP_STACKED
   (___, LockLayer(DVORAK), LockLayer(PUNCTUATION), LockLayer(MODS), M(MACRO_TOGGLE_QUKEYS), ___, ___,
@@ -194,56 +243,8 @@ KEYMAPS(
                                Key_LeftArrow,          Key_DownArrow,            Key_UpArrow,              Key_RightArrow,  ___,              ___,
    Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
    ___, Key_RightAlt, ___, Key_Enter,
-   ___),
+   ___)
 
-  
-  [DVORAK] = KEYMAP_STACKED
-  (___,          ___,         ___,     ___,      ___, ___, ___,
-   ___, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, ___,
-   Key_LeftBracket,   Key_A,         Key_O,     Key_E,      Key_U, Key_I,
-   Key_RightBracket, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, ___,
-   ___, ___, ___, ___,
-   ___,
-
-   ___,   ___, ___, ___, ___, ___, Key_Equals,
-   ___,      Key_F, Key_G, Key_C, Key_R, Key_L, Key_Slash,
-                   Key_D, Key_H, Key_T, Key_N, Key_S, Key_Minus,
-   ___,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Equals,
-   ___, ___, ___, ___,
-   ___),
-
-// Move punctuation back for the case when OS is set to Qwerty
-   [PUNCTUATION] = KEYMAP_STACKED (                             \
-    ___,          ___, ___, ___, ___, ___, ___, \
-    ___, ___, ___, ___, ___, ___, ___,           \
-    Key_PageUp,   ___, ___, ___, ___, ___,                    \
-    Key_PageDown, ___, ___, ___, ___, ___, ___,        \
-    ___, ___, ___, ___,         \
-                          ___,     \
-\
-    ___,       ___, ___, ___,     ___,      ___,         Key_Keymap4, \
-    ___,     ___, ___, ___,     ___,      ___,         Key_Equals,       \
-                   ___, ___, ___,     ___,      ___, ___,       \
-    ___,  ___, ___, ___, ___, ___,     Key_Minus,       \
-    ___, ___, ___, ___,                   \
-    ___ ),
-
-// Move mods back to default layout
-   [MODS] = KEYMAP_STACKED (                        \
-    ___,          ___, ___, ___, ___, ___, ___, \
-    ___, ___, ___, ___, ___, ___, ___,           \
-    ___,   ___, ___, ___, ___, ___,                    \
-    ___, ___, ___, ___, ___, ___, Key_Escape,        \
-    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,         \
-                          ___,     \
-\
-    ___,       ___, ___, ___,     ___,      ___,         ___, \
-    ___,     ___, ___, ___,     ___,      ___,         ___,       \
-                   ___, ___, ___,     ___,      ___, ___,       \
-    Key_RightAlt,  ___, ___, ___, ___, ___,     ___,       \
-    Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,                   \
-    ___ \
-        )
    
 ) // KEYMAPS(
 

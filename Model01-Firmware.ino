@@ -160,8 +160,8 @@ KEYMAPS(
 
    M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_RightBracket,
    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_Escape,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
+                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Semicolon,
+   Key_Quote,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
    Key_RightShift, MT(RightAlt, Escape), Key_RightControl, Key_Spacebar,
    ShiftToLayer(FUNCTION)),
 

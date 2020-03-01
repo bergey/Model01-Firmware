@@ -510,8 +510,8 @@ void setup() {
   // with USB devices
   LEDOff.activate();
 
-  Qukeys.setTimeout(200);
-  Qukeys.setReleaseDelay(20);
+  Qukeys.setHoldTimeout(200);
+  // Qukeys.setReleaseDelay(20);
 
 
 }

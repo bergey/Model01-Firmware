@@ -3,7 +3,7 @@
 // See "LICENSE" for license details
 
 #ifndef BUILD_INFORMATION
-#define BUILD_INFORMATION "locally built"
+#define BUILD_INFORMATION "bergey: remap RightControl"
 #endif
 
 
@@ -158,11 +158,11 @@ KEYMAPS(
    Key_Backspace, Key_LeftControl, ALT_T(Escape), Key_LeftShift,
    ShiftToLayer(FUNCTION),
 
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_RightBracket,
+   M(MACRO_VERSION_INFO),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_RightBracket,
    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
-                  Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Semicolon,
-   Key_Quote,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
-   Key_RightShift, MT(RightAlt, Escape), Key_RightControl, Key_Spacebar,
+   Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
+   Key_RightControl,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
+   Key_RightShift, MT(RightAlt, Escape), ___, Key_Spacebar,
    ShiftToLayer(FUNCTION)),
 
 

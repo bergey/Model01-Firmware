@@ -165,8 +165,6 @@ KEYMAPS(
    Key_RightShift, MT(RightAlt, Escape), ___, Key_Spacebar,
    ShiftToLayer(FUNCTION)),
 
-
-  
   [DVORAK] = KEYMAP_STACKED
   (___,          ___,         ___,     ___,      ___, ___, ___,
    ___, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, ___,
@@ -178,7 +176,7 @@ KEYMAPS(
    ___,   ___, ___, ___, ___, ___, Key_Equals,
    ___,      Key_F, Key_G, Key_C, Key_R, Key_L, Key_Slash,
                    Key_D, Key_H, Key_T, Key_N, Key_S, Key_Minus,
-   ___,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Equals,
+   ___,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Backslash,
    ___, ___, ___, ___,
    ___),
 

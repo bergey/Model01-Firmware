@@ -3,7 +3,7 @@
 // See "LICENSE" for license details
 
 #ifndef BUILD_INFORMATION
-#define BUILD_INFORMATION "bergey 2020-09-03: Enter, Mac Cmd"
+#define BUILD_INFORMATION "bergey 2020-09-03: Dvorak base layer"
 #endif
 
 
@@ -141,7 +141,7 @@ enum { MACRO_VERSION_INFO,
   *
   */
 
-enum { PRIMARY, DVORAK, PUNCTUATION, MODS, NUMPAD, FUNCTION }; // layers
+enum { PRIMARY, QWERTY, PUNCTUATION, MODS, NUMPAD, FUNCTION }; // layers
 
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
@@ -150,33 +150,33 @@ enum { PRIMARY, DVORAK, PUNCTUATION, MODS, NUMPAD, FUNCTION }; // layers
 
 KEYMAPS(
 
-  [PRIMARY] = KEYMAP_STACKED
+  [PRIMARY] = KEYMAP_STACKED // modified Dvorak
   (___,          Key_1, Key_2, Key_3, Key_4, Key_5, ShiftToLayer(NUMPAD),// TODO LED
-   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_Minus,   Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftGui,
+   Key_Backtick, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, Key_Tab,
+   Key_LeftBracket,   Key_A,         Key_O,     Key_E,      Key_U, Key_I,
+   Key_RightBracket, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, Key_LeftGui,
    Key_Backspace, Key_LeftControl, ALT_T(Escape), Key_LeftShift,
    ShiftToLayer(FUNCTION),
 
-   Key_Enter,  Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_RightBracket,
-   Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
-   Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
-   Key_RightControl,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
+   Key_Enter,  Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Equals,
+   ___,      Key_F, Key_G, Key_C, Key_R, Key_L, Key_Slash,
+                   Key_D, Key_H, Key_T, Key_N, Key_S, Key_Minus,
+   Key_RightControl,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Backslash,
    Key_RightShift, MT(RightAlt, Escape), ___, Key_Spacebar,
    ShiftToLayer(FUNCTION)),
 
-  [DVORAK] = KEYMAP_STACKED
-  (___,          ___,         ___,     ___,      ___, ___, ___,
-   ___, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, ___,
-   Key_LeftBracket,   Key_A,         Key_O,     Key_E,      Key_U, Key_I,
-   Key_RightBracket, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, Key_LeftGui,
-   ___, ___, ___, ___,
-   ___,
+  [QWERTY] = KEYMAP_STACKED // Qwerty overlay
+  (___,         ___, ___, ___, ___, ___, ___,
+   ___, Key_Q, Key_W, Key_E, Key_R, Key_T, ___,
+   Key_Minus,   Key_A, Key_S, Key_D, Key_F, Key_G,
+   Key_Equals, Key_Z, Key_X, Key_C, Key_V, Key_B, ___,
+  ___, ___, ___, ___, 
+  ___, 
 
-   ___,   ___, ___, ___, ___, ___, Key_Equals,
-   ___,      Key_F, Key_G, Key_C, Key_R, Key_L, Key_Slash,
-                   Key_D, Key_H, Key_T, Key_N, Key_S, Key_Minus,
-   ___,   Key_B, Key_M, Key_W, Key_V, Key_Z, Key_Backslash,
+  ___,  ___, ___, ___,     ___,         ___,         Key_RightBracket, 
+   ___,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
+   Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
+   ___,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
    ___, ___, ___, ___,
    ___),
 
@@ -214,7 +214,7 @@ KEYMAPS(
         ),
 
   [NUMPAD] =  KEYMAP_STACKED
-  (___, LockLayer(DVORAK), LockLayer(PUNCTUATION), LockLayer(MODS), M(MACRO_TOGGLE_QUKEYS), ___, ___,
+  (___, LockLayer(QWERTY), LockLayer(PUNCTUATION), LockLayer(MODS), M(MACRO_TOGGLE_QUKEYS), ___, ___,
     M(MACRO_RAINBOW), M(MACRO_RAINBOW_WAVE), M(MACRO_CHASE), M(MACRO_SolidRed), M(MACRO_SolidOrange), M(MACRO_SolidYellow), M(MACRO_LED_OFF),       \
    M(MACRO_SolidGreen), M(MACRO_SolidBlue), M(MACRO_SolidViolet), M(MACRO_BREATHE), M(MACRO_STALKER), ___, \
    ___, ___, ___, ___, ___, ___, ___,

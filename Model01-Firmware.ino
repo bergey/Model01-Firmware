@@ -3,7 +3,7 @@
 // See "LICENSE" for license details
 
 #ifndef BUILD_INFORMATION
-#define BUILD_INFORMATION "bergey: remap RightControl"
+#define BUILD_INFORMATION "bergey 2020-09-03: Enter, Mac Cmd"
 #endif
 
 
@@ -158,7 +158,7 @@ KEYMAPS(
    Key_Backspace, Key_LeftControl, ALT_T(Escape), Key_LeftShift,
    ShiftToLayer(FUNCTION),
 
-   M(MACRO_VERSION_INFO),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_RightBracket,
+   Key_Enter,  Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_RightBracket,
    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_LeftBracket,
    Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    Key_RightControl,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Backslash,
@@ -169,7 +169,7 @@ KEYMAPS(
   (___,          ___,         ___,     ___,      ___, ___, ___,
    ___, Key_Quote,     Key_Comma, Key_Period, Key_P, Key_Y, ___,
    Key_LeftBracket,   Key_A,         Key_O,     Key_E,      Key_U, Key_I,
-   Key_RightBracket, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, Key_Escape,
+   Key_RightBracket, Key_Semicolon, Key_Q,     Key_J,      Key_K, Key_X, Key_LeftGui,
    ___, ___, ___, ___,
    ___,
 
@@ -191,7 +191,7 @@ KEYMAPS(
 \
     ___,       ___, ___, ___,     ___,      ___,         LockLayer(NUMPAD), \
     ___,     ___, ___, ___,     ___,      ___,         Key_Equals,       \
-                   ___, ___, ___,     ___,      ___, ___,       \
+    ___, ___, ___,     ___,      ___, ___,                              \
     ___,  ___, ___, ___, ___, ___,     Key_Minus,       \
     ___, ___, ___, ___,                   \
     ___ ),
@@ -229,7 +229,7 @@ KEYMAPS(
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___,      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           LockLayer(NUMPAD),
+  (M(MACRO_VERSION_INFO),      Key_F1,           Key_F2,      Key_F3,     Key_F4,        Key_F5,           LockLayer(NUMPAD),
    Key_Tab,  ___,              Key_mouseUp, ___,        Key_mouseBtnR, Key_mouseWarpEnd, Key_mouseWarpNE,
    Key_PageUp, Key_mouseL,       Key_mouseDn, Key_mouseR, Key_mouseBtnL, Key_mouseWarpNW,
    Key_PageDown,  Key_PrintScreen,  Key_Insert,  ___,        Key_mouseBtnM, Key_mouseWarpSW,  Key_mouseWarpSE,
